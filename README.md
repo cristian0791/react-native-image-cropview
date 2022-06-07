@@ -142,4 +142,4 @@ Done `callback` will be called with a response object, refer to [Response Object
 | cancel       | Programmatically call cancel             |
 | reset        | Programmatically call reset              |
 
-For more advanced usage check our [example app](/example/src/App.tsx).
+For more advanced usage check our [example app](/example/src/screens).
