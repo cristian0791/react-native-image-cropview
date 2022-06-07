@@ -11,7 +11,7 @@ A React Native module that allows you to crop photos, built with react native An
 
 | Android | iOS |
 | --- | --- |
-| <img src="https://media.giphy.com/media/uyjCH8dwRpIsO7ZJm2/giphy-downsized-large.gif" width="150"> | <img src="https://media.giphy.com/media/c22AVY87u6F6SFCwSh/giphy.gif" width="150"> |
+| <img src="https://media.giphy.com/media/uyjCH8dwRpIsO7ZJm2/giphy-downsized-large.gif" width="150"> | <img src="https://media.giphy.com/media/MBNHOkKGEIrT4NJacq/giphy.gif" width="150"> |
 
 
 ## Getting started
