@@ -21,7 +21,7 @@ const Stack = createNativeStackNavigator();
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator initialRouteName="Home" screenOptions={{ animationTypeForReplace: "push", animation: "slide_from_left" }}>
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="CircleCrop" options={{ title: "Circle Cropper" }} component={CircleCrop} />
         <Stack.Screen name="FreeCrop" options={{ title: "Free Cropper" }}   component={FreeCrop} />
