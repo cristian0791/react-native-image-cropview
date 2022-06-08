@@ -1,4 +1,4 @@
-#  `@react-native-image-cropview`
+#  `react-native-image-cropview`
 
 A React Native module that allows you to crop photos, built with react native Animated api and react-native-gesture-handler.
 
