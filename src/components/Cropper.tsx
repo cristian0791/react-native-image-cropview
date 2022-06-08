@@ -108,7 +108,7 @@ const Cropper: ForwardRefRenderFunction<CropperHandler, CropperProps> = (
   // Used to initiate the cropper after everything was rendered
   const onContainerLayout = (event: LayoutChangeEvent) => {
     const { width, height } = event.nativeEvent.layout
-    console.log({ onContainerLayout: event.nativeEvent.layout })
+
     if (!initialOnLayoutWasCalled.current) {
       initialOnLayoutWasCalled.current = true
 
@@ -231,9 +231,8 @@ const Cropper: ForwardRefRenderFunction<CropperHandler, CropperProps> = (
     footerRef.current?.setResetActive(false)
     footerRef.current?.setDoneActive(false)
 
-    console.log(containerRef)
     const measures = await measureInWindow(containerRef)
-    console.log(measures)
+
     initCropper(measures)
 
     onReset && onReset()
@@ -246,15 +245,6 @@ const Cropper: ForwardRefRenderFunction<CropperHandler, CropperProps> = (
   const onFooterDone = () => {
     if (imageRef.current) {
       const layout = imageRef.current?.getCropArea()
-
-      console.log({
-        resized: {
-          x: layout.x / originalImageScale.current,
-          y: layout.y / originalImageScale.current,
-          width: layout.width / originalImageScale.current,
-          height: layout.height / originalImageScale.current,
-        },
-      })
 
       onDone &&
         onDone({

@@ -17,7 +17,7 @@ const AspectRatioCrop = () => {
         mediaType: "photo",
         selectionLimit: 1
       });
-      console.log(assets)
+
       if(assets && assets?.length > 0) {
         setPickedImage(assets[0]);
       }
