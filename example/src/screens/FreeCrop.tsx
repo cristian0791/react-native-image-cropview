@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { Button, Image, LayoutRectangle, Text, View } from 'react-native';
 
 import Cropper from 'react-native-image-cropview';
-import ImageSize from 'react-native-image-size';
 import ImageEditor from "@react-native-community/image-editor";
 
 import { launchImageLibrary } from 'react-native-image-picker';
+import { getImageSize } from '../utils';
 
 const FreeCrop = () => {
   const [pickedImage, setPickedImage] = useState<any>();
@@ -40,25 +40,6 @@ const FreeCrop = () => {
   const onCropCancel = () => {
     setPickedImage(null);
     setCroppedImage(null);
-  }
-
-  const getImageSize = async (uri: string): Promise<{ width: number; height: number; }> => {
-    const size = await ImageSize.getSize(uri);
-    
-    let width = size.width;
-    let height = size.height;
-
-    // some android devices returns the image with rotation applied.
-    // If the image is rotated switch width with height
-    if(size.rotation === 90 || size.rotation === 270) {
-      width = size.height;
-      height = size.width;
-    }
-
-    return {
-      width,
-      height
-    }
   }
 
   return (

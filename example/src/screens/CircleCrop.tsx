@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { Button, Image, LayoutRectangle, Text, View } from 'react-native';
 
 import Cropper from 'react-native-image-cropview';
-import ImageSize from 'react-native-image-size';
 import ImageEditor from "@react-native-community/image-editor";
 
 import { launchImageLibrary } from 'react-native-image-picker';
+import { getImageSize } from '../utils';
 
 const CircleCrop = () => {
   const [pickedImage, setPickedImage] = useState<any>();
@@ -40,10 +40,6 @@ const CircleCrop = () => {
   const onCropCancel = () => {
     setPickedImage(null);
     setCroppedImage(null);
-  }
-
-  const getImageSize = async (uri: string): Promise<{ width: number; height: number; }> => {
-    return await ImageSize.getSize(uri);
   }
 
   return (
