@@ -17,7 +17,7 @@ interface IndicatorsProps {
   left: SharedValue
   containerWidth: number
   containerHeight: number
-  gridColor: string
+  gridColor?: string
 }
 
 const Indicators: ForwardRefRenderFunction<

@@ -13,7 +13,7 @@ interface OverlayProps {
   containerHeight: number
   backdropOpacity: Animated.AnimatedInterpolation
   minCropperBoxSize: { width: number; height: number }
-  backgroundColor: string
+  backgroundColor?: string
 }
 
 const Overlay: React.FC<OverlayProps> = ({

@@ -41,8 +41,8 @@ interface CropBoxProps {
   cropBoxRefs: Array<React.Ref<any>>
   lockedAspectRatio: boolean
   rounded?: boolean
-  backgroundColor: string
-  gridColor: string
+  backgroundColor?: string
+  gridColor?: string
 }
 
 const CropBox: ForwardRefRenderFunction<CropBoxHandler, CropBoxProps> = (

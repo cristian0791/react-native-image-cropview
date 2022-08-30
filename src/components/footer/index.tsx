@@ -13,8 +13,8 @@ interface FooterProps {
   onCancel: () => void
   onDone: () => void
   onReset: () => void
-  hideResetButton: boolean
-  doneTextStyle: TextStyle
+  hideResetButton?: boolean
+  doneTextStyle?: TextStyle
 }
 
 const Footer: ForwardRefRenderFunction<FooterHandler, FooterProps> = (
