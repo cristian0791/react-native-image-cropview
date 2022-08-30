@@ -17,12 +17,16 @@ interface IndicatorsProps {
   left: SharedValue
   containerWidth: number
   containerHeight: number
+  gridColor: string
 }
 
 const Indicators: ForwardRefRenderFunction<
   IndicatorHandler,
   IndicatorsProps
-> = ({ top, bottom, right, left, containerWidth, containerHeight }, ref) => {
+> = (
+  { top, bottom, right, left, containerWidth, containerHeight, gridColor },
+  ref
+) => {
   const currentHeight = Animated.subtract(
     containerHeight,
     Animated.add(
@@ -73,6 +77,7 @@ const Indicators: ForwardRefRenderFunction<
 
   const marginBarSize = 1
   const centerBarSize = 0.5
+  const lineColor = gridColor || '#FFFFFF'
 
   const verticalBarsSpaceBetween = Animated.divide(
     Animated.subtract(
@@ -102,7 +107,11 @@ const Indicators: ForwardRefRenderFunction<
       <Animated.View
         style={[
           styles.marginIndicator,
-          { width: marginBarSize, height: containerHeight },
+          {
+            width: marginBarSize,
+            height: containerHeight,
+            backgroundColor: lineColor,
+          },
           {
             transform: [
               { translateY: translateY },
@@ -121,7 +130,11 @@ const Indicators: ForwardRefRenderFunction<
       <Animated.View
         style={[
           styles.marginIndicator,
-          { width: marginBarSize, height: containerHeight },
+          {
+            width: marginBarSize,
+            height: containerHeight,
+            backgroundColor: lineColor,
+          },
           {
             transform: [
               { translateY: translateY },
@@ -138,7 +151,11 @@ const Indicators: ForwardRefRenderFunction<
           <Animated.View
             style={[
               styles.centerIndicators,
-              { width: centerBarSize, height: containerHeight },
+              {
+                width: centerBarSize,
+                height: containerHeight,
+                backgroundColor: lineColor,
+              },
               {
                 transform: [
                   { translateY: translateY },
@@ -157,7 +174,11 @@ const Indicators: ForwardRefRenderFunction<
           <Animated.View
             style={[
               styles.centerIndicators,
-              { width: centerBarSize, height: containerHeight },
+              {
+                width: centerBarSize,
+                height: containerHeight,
+                backgroundColor: lineColor,
+              },
               {
                 transform: [
                   { translateY: translateY },
@@ -179,7 +200,11 @@ const Indicators: ForwardRefRenderFunction<
       <Animated.View
         style={[
           styles.marginIndicator,
-          { height: marginBarSize, width: containerWidth },
+          {
+            height: marginBarSize,
+            width: containerWidth,
+            backgroundColor: lineColor,
+          },
           {
             transform: [
               {
@@ -198,7 +223,11 @@ const Indicators: ForwardRefRenderFunction<
       <Animated.View
         style={[
           styles.marginIndicator,
-          { height: marginBarSize, width: containerWidth },
+          {
+            height: marginBarSize,
+            width: containerWidth,
+            backgroundColor: lineColor,
+          },
           {
             transform: [
               { translateY: bottom.animatedValue.current },
@@ -215,7 +244,11 @@ const Indicators: ForwardRefRenderFunction<
           <Animated.View
             style={[
               styles.centerIndicators,
-              { height: centerBarSize, width: containerWidth },
+              {
+                height: centerBarSize,
+                width: containerWidth,
+                backgroundColor: lineColor,
+              },
               {
                 transform: [
                   {
@@ -234,7 +267,11 @@ const Indicators: ForwardRefRenderFunction<
           <Animated.View
             style={[
               styles.centerIndicators,
-              { height: centerBarSize, width: containerWidth },
+              {
+                height: centerBarSize,
+                width: containerWidth,
+                backgroundColor: lineColor,
+              },
               {
                 transform: [
                   {

@@ -6,7 +6,12 @@ import React, {
   useRef,
   useState,
 } from 'react'
-import { LayoutChangeEvent, LayoutRectangle, View } from 'react-native'
+import {
+  LayoutChangeEvent,
+  LayoutRectangle,
+  View,
+  TextStyle,
+} from 'react-native'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 
 import { maximumAvailableScale } from '../config'
@@ -70,6 +75,22 @@ export interface CropperProps {
    * (Optional) hide all the bottom actions.
    */
   hideFooter?: boolean
+  /**
+   * backgroundColor outside crop box
+   */
+  backgroundColor?: string
+  /**
+   * Color for grid lines, corners
+   */
+  gridColor?: string
+  /**
+   * Show footer as header component
+   */
+  showHeader?: boolean
+  /**
+   * Done button text styles
+   */
+  doneTextStyle?: TextStyle
 }
 
 const Cropper: ForwardRefRenderFunction<CropperHandler, CropperProps> = (
@@ -83,6 +104,10 @@ const Cropper: ForwardRefRenderFunction<CropperHandler, CropperProps> = (
     scaleMax,
     hideFooter,
     getImageSize,
+    backgroundColor,
+    gridColor,
+    showHeader,
+    doneTextStyle,
   },
   ref
 ) => {
@@ -286,6 +311,16 @@ const Cropper: ForwardRefRenderFunction<CropperHandler, CropperProps> = (
 
   return (
     <GestureHandlerRootView style={styles.rootView}>
+      {showHeader && (
+        <Footer
+          hideResetButton
+          ref={footerRef}
+          onDone={onFooterDone}
+          onCancel={onFooterCancel}
+          onReset={onFooterReset}
+          doneTextStyle={doneTextStyle}
+        />
+      )}
       <View
         onLayout={onContainerLayout}
         ref={containerRef}
@@ -300,8 +335,10 @@ const Cropper: ForwardRefRenderFunction<CropperHandler, CropperProps> = (
               updateImageBounderies={updateImageBounderies}
               lockedAspectRatio={lockedAspectRatio()}
               rounded={rounded}
+              backgroundColor={backgroundColor}
+              gridColor={gridColor}
             />
-
+            
             <Image
               ref={imageRef}
               cropBoxRefs={cropBoxRefs.current}
