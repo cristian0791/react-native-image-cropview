@@ -4,7 +4,7 @@ import React, {
   useImperativeHandle,
   useState,
 } from 'react'
-import { Text, TouchableOpacity, View } from 'react-native'
+import { Text, TouchableOpacity, View, TextStyle } from 'react-native'
 
 import styles from '../../styles'
 import { FooterHandler } from '../../types'
@@ -13,10 +13,12 @@ interface FooterProps {
   onCancel: () => void
   onDone: () => void
   onReset: () => void
+  hideResetButton?: boolean
+  doneTextStyle?: TextStyle
 }
 
 const Footer: ForwardRefRenderFunction<FooterHandler, FooterProps> = (
-  { onCancel, onDone, onReset },
+  { onCancel, onDone, onReset, hideResetButton, doneTextStyle },
   ref
 ) => {
   const hitSlop = { top: 10, left: 10, right: 10, bottom: 10 }
@@ -35,7 +37,7 @@ const Footer: ForwardRefRenderFunction<FooterHandler, FooterProps> = (
         <Text style={[styles.defaultText]}>Cancel</Text>
       </TouchableOpacity>
 
-      {resetActive && (
+      {!hideResetButton && resetActive && (
         <TouchableOpacity hitSlop={hitSlop} onPress={onReset}>
           <Text
             style={[styles.defaultText, styles.resetText, styles.activeText]}
@@ -46,7 +48,7 @@ const Footer: ForwardRefRenderFunction<FooterHandler, FooterProps> = (
       )}
 
       <TouchableOpacity hitSlop={hitSlop} onPress={onDone}>
-        <Text style={[styles.defaultText]}>Done</Text>
+        <Text style={[styles.defaultText, doneTextStyle]}>Done</Text>
       </TouchableOpacity>
     </View>
   )

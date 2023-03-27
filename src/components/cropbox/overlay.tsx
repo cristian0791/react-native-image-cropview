@@ -13,6 +13,7 @@ interface OverlayProps {
   containerHeight: number
   backdropOpacity: Animated.AnimatedInterpolation
   minCropperBoxSize: { width: number; height: number }
+  backgroundColor?: string
 }
 
 const Overlay: React.FC<OverlayProps> = ({
@@ -25,6 +26,7 @@ const Overlay: React.FC<OverlayProps> = ({
   containerHeight,
   backdropOpacity,
   minCropperBoxSize,
+  backgroundColor,
 }) => {
   const { width: screenWidth, height: screenHeight } = Dimensions.get('screen')
 
@@ -89,6 +91,8 @@ const Overlay: React.FC<OverlayProps> = ({
   const translateX = Animated.add(translateLeft, translateRight)
   const translateY = Animated.add(translateTop, translateBottom)
 
+  const borderColor = backgroundColor || 'rgba(0,0,0,0.85)'
+
   return (
     <>
       <Animated.View
@@ -104,12 +108,12 @@ const Overlay: React.FC<OverlayProps> = ({
             top: positionTop,
             left: positionLeft,
             borderRadius: rounded ? apparentSize / 2 / scale : 0,
-            borderTopColor: 'rgba(0,0,0,0.85)',
-            borderBottomColor: 'rgba(0,0,0,0.85)',
-            borderLeftColor: 'rgba(0,0,0,0.85)',
+            borderTopColor: borderColor,
+            borderBottomColor: borderColor,
+            borderLeftColor: borderColor,
             borderRightColor: Platform.select({
-              ios: 'rgba(0,0,0,0.85)',
-              android: 'rgba(0,0,0,0.849)',
+              ios: borderColor,
+              android: backgroundColor || 'rgba(0,0,0,0.849)',
             }),
             transform: [
               { translateX },

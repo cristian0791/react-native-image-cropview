@@ -41,6 +41,8 @@ interface CropBoxProps {
   cropBoxRefs: Array<React.Ref<any>>
   lockedAspectRatio: boolean
   rounded?: boolean
+  backgroundColor?: string
+  gridColor?: string
 }
 
 const CropBox: ForwardRefRenderFunction<CropBoxHandler, CropBoxProps> = (
@@ -50,6 +52,8 @@ const CropBox: ForwardRefRenderFunction<CropBoxHandler, CropBoxProps> = (
     cropBoxRefs,
     lockedAspectRatio,
     rounded,
+    backgroundColor,
+    gridColor,
   },
   ref
 ) => {
@@ -938,6 +942,8 @@ const CropBox: ForwardRefRenderFunction<CropBoxHandler, CropBoxProps> = (
     )
   }
 
+  const cornerColor = gridColor || '#FCFCFC'
+
   return (
     <>
       <Indicators
@@ -946,6 +952,7 @@ const CropBox: ForwardRefRenderFunction<CropBoxHandler, CropBoxProps> = (
         bottom={bottom}
         right={right}
         left={left}
+        gridColor={gridColor}
         containerWidth={containerLayout.current.width}
         containerHeight={containerLayout.current.height}
       />
@@ -956,6 +963,7 @@ const CropBox: ForwardRefRenderFunction<CropBoxHandler, CropBoxProps> = (
         right={right}
         left={left}
         rounded={rounded}
+        backgroundColor={backgroundColor}
         containerWidth={containerLayout.current.width}
         containerHeight={containerLayout.current.height}
         backdropOpacity={backdropOpacity}
@@ -976,6 +984,7 @@ const CropBox: ForwardRefRenderFunction<CropBoxHandler, CropBoxProps> = (
           style={[
             styles.corner,
             styles.topLeftCorner,
+            { borderColor: cornerColor },
             {
               transform: [
                 {
@@ -1009,6 +1018,7 @@ const CropBox: ForwardRefRenderFunction<CropBoxHandler, CropBoxProps> = (
           style={[
             styles.corner,
             styles.topRightCorner,
+            { borderColor: cornerColor },
             {
               transform: [
                 {
@@ -1042,6 +1052,7 @@ const CropBox: ForwardRefRenderFunction<CropBoxHandler, CropBoxProps> = (
           style={[
             styles.corner,
             styles.bottomLeftCorner,
+            { borderColor: cornerColor },
             {
               transform: [
                 {
@@ -1075,6 +1086,7 @@ const CropBox: ForwardRefRenderFunction<CropBoxHandler, CropBoxProps> = (
           style={[
             styles.corner,
             styles.bottomRightCorner,
+            { borderColor: cornerColor },
             {
               transform: [
                 {
@@ -1111,6 +1123,7 @@ const CropBox: ForwardRefRenderFunction<CropBoxHandler, CropBoxProps> = (
             style={[
               styles.corner,
               styles.topLine,
+              { borderColor: cornerColor },
               {
                 transform: [
                   { translateX: topMiddleBar },
@@ -1141,6 +1154,7 @@ const CropBox: ForwardRefRenderFunction<CropBoxHandler, CropBoxProps> = (
             style={[
               styles.corner,
               styles.bottomLine,
+              { borderColor: cornerColor },
               {
                 transform: [
                   { translateX: bottomMiddleBar },
@@ -1171,6 +1185,7 @@ const CropBox: ForwardRefRenderFunction<CropBoxHandler, CropBoxProps> = (
             style={[
               styles.corner,
               styles.leftLine,
+              { borderColor: cornerColor },
               {
                 transform: [
                   {
@@ -1201,6 +1216,7 @@ const CropBox: ForwardRefRenderFunction<CropBoxHandler, CropBoxProps> = (
             style={[
               styles.corner,
               styles.rightLine,
+              { borderColor: cornerColor },
               {
                 transform: [
                   {
